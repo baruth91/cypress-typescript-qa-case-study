@@ -1,0 +1,44 @@
+name: Cypress transaction case checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cypress-case-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  transaction:
+    name: TypeScript and three demo scenarios
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install locked test dependencies
+        run: npm ci
+      - name: Prepare the pinned official demo
+        run: npm run app:prepare
+      - name: Check test types
+        run: npm run typecheck
+      - name: Start the local frontend and API and run all three cases
+        run: npm test
+      - name: Preserve JUnit, videos and failure screenshots
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: cypress-transaction-evidence
+          path: |
+            reports/
+            cypress/videos/
+            cypress/screenshots/
+          retention-days: 7

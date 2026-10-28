@@ -1,0 +1,8 @@
+node_modules/
+.work/
+cypress/screenshots/
+cypress/videos/
+reports/
+*.log
+.env
+*.tsbuildinfo

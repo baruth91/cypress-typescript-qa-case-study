@@ -1,0 +1,22 @@
+{
+  "name": "cypress-typescript-qa-case-study",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An educational QA case study verifying persisted demo transactions with Cypress and TypeScript.",
+  "scripts": {
+    "app:prepare": "node scripts/prepare-app.mjs",
+    "app:start": "node scripts/start-app.mjs",
+    "typecheck": "tsc --noEmit",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run --browser chrome",
+    "test": "start-server-and-test app:start \"http://localhost:3000|http://localhost:3001\" cy:run"
+  },
+  "engines": { "node": ">=22.12.0 <23" },
+  "devDependencies": {
+    "@types/node": "22.10.0",
+    "cypress": "16.1.1",
+    "start-server-and-test": "3.0.13",
+    "typescript": "5.8.3",
+    "yarn": "1.22.22"
+  }
+}

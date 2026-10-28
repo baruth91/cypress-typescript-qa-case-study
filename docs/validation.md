@@ -30,5 +30,16 @@ this is not an audit of the separately installed upstream application.
 - Upstream emits dependency/React deprecation warnings. No blanket exception
   suppression or modifications to upstream source were used to make tests pass.
 
-The hosted CI result will be recorded after execution. A configured workflow alone
-is not a passing CI result.
+## Verified hosted CI
+
+[The first GitHub Actions run](https://github.com/baruth91/cypress-typescript-qa-case-study/actions/runs/40697835286)
+passed on 2026-10-28 at code revision `7d19adb`: **3 passed, 0 failures, 0 pending,
+0 skipped**, with 6.298 seconds recorded in JUnit. The complete job took 2 minutes
+14 seconds, including dependency/application installation and service startup.
+The TypeScript step also passed. JUnit and the execution video were uploaded in
+the `cypress-transaction-evidence` artifact, retained for seven days.
+
+The target was Ubuntu 24.04, Node 22.23.2 and headless Chrome. Frontend and API ran
+inside that same runner at localhost. All three original cases were selected;
+none were omitted to obtain the passing result. No Cypress Cloud subscription,
+recording key, public demo host or response stubs were used.

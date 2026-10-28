@@ -6,6 +6,13 @@ It connects a business risk to original tests, repeatable data and inspectable
 execution evidence. The first increment contains **three cases**, not a complete
 payment-system test suite.
 
+## Verified first increment
+
+All **three cases passed locally on Windows and in GitHub Actions on Ubuntu**,
+using Chrome. TypeScript checks passed in both environments.
+[View the verified cloud run](https://github.com/baruth91/cypress-typescript-qa-case-study/actions/runs/40697835286)
+and the [detailed validation record](docs/validation.md).
+
 ## The quality question
 
 When a demo user sends USD 12 to another demo user, is the intended transaction
